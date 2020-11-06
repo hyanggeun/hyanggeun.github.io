@@ -70,7 +70,9 @@ func main(){
     
     * receiver의 값을 변경하고자 할 때(단순히 읽기가 아닌 쓰기 작업도 같이)
     * struct의 크기가 커서 deep copy 비용이 클 때 
-    * 코드 일관성(option): 어떤 함수가 포인터 receiver를 사용하는 경우 일관성을 줄 때 
+    * 코드 일관성(option): 어떤 함수가 포인터 receiver를 사용하는 경우 일관성을 줄 때
+ 
+
 ### Priority Queue 코드를 통해서 알아보는 Pointer Receiver
 위에 문제를 풀어보며 대충 어떨 때 포인터를 붙여야 하는지는 이해가 되었을 것이다. 그렇다면 실전으로 넘어가보자.
 
