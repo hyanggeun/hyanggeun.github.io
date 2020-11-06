@@ -133,7 +133,7 @@ func (pq *waitForPriorityQueue) Pop() interface{} {
 ``` 
 
 위의 코드를 보고 궁금한점이 2가지정도가 생길 수 있다. 
-1. 왜 ```waitForPriorityQueue``` Slice의 ```waitFor```구조체에는 Pointer Receiver를 사용했을까? 
+1. 왜 ```waitForPriorityQueue``` Slice의 ```waitFor```구조체에는 Pointer를 사용했을까? 
 2. Slice에 어떤 값을 append할 때는 무조건 pointer를 사용해야 하는가? 
 
 1번 궁금증부터 해결해보곘다. 
