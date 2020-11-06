@@ -1,7 +1,7 @@
 ---
 title: Kubernetes Custom Controller Workqueue
 date: 2020-11-04 19:00:00 +0900
-categories: [Kubernetes, Go]
+categories: [Kubernetes]
 tags: [Go, Kubernetes, client-go, controller]
 ---
 
