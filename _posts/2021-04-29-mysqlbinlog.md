@@ -12,18 +12,19 @@ tags: [DB, Mysql]
 
 ### Binlog를 활성화하기 위한 옵션들
 * my.cnf에 아래 옵션들을 넣어준다.     
-1. log-bin=[binlog가 저장될 디렉토리와 파일명] 
-2. binlog_format=[ROW, MIXED, STATEMENT] ([참고](http://channy.creation.net/project/dev.kthcorp.com/2011/09/16/mysql-replication-binlog-format-mixed-vs-row/index.html)) 
-    * ROW
-        * 변경된 행 자체를 BASE64로 Encoding하여 Binary Log에 기록하는 방식
-        * Master 에서 실행된 SQL이 Slave 에서 재 실행되지 않으나, 변경된 행이 많은 경우 Binary Log 사이즈가 비약적으로 커질 수 있음
-    * MIXED
-        * 기본적으로 Statement-Based Type으로 기록되나, 필요에 따라 Row-base Type으로 Binary Log에 기록되는 방식
-    * STATEMENT 
-        *  실행된 SQL을 그대로 Binary Log에 기록하는 방식
-        *  Binary Log 사이즈는 작으나, SQL 실행 시점에 따라 적용되는 결과가 달라질 수 있음 (Time Function, UUID, User Defined Function)
-3. expire_log_days=[binlog 보관 기간]
-4. max_binlog_size=[binlog 파일 최대 사이즈]
+    1. log-bin=[binlog가 저장될 디렉토리와 파일명] 
+    2. binlog_format=[ROW, MIXED, STATEMENT] ([참고](http://channy.creation.net/project/dev.kthcorp.com/2011/09/16/mysql-replication-binlog-format-mixed-vs-row/index.html)) 
+        * ROW
+            * 변경된 행 자체를 BASE64로 Encoding하여 Binary Log에 기록하는 방식
+            * Master 에서 실행된 SQL이 Slave 에서 재 실행되지 않으나, 변경된 행이 많은 경우 Binary Log 사이즈가 비약적으로 커질 수 있음
+        * MIXED
+            * 기본적으로 Statement-Based Type으로 기록되나, 필요에 따라 Row-base Type으로 Binary Log에 기록되는 방식
+        * STATEMENT 
+            *  실행된 SQL을 그대로 Binary Log에 기록하는 방식
+            *  Binary Log 사이즈는 작으나, SQL 실행 시점에 따라 적용되는 결과가 달라질 수 있음 (Time Function, UUID, User Defined Function)
+    
+    3. expire_log_days=[binlog 보관 기간]
+    4. max_binlog_size=[binlog 파일 최대 사이즈]
 * 설명되지 않은 더 많은 옵션들은 [mysql 공식 문서](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html) 에서 확인하자.
 
 ## mysqlbinlog 
