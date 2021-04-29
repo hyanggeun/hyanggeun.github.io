@@ -5,15 +5,15 @@ categories: [DB, Mysql]
 tags: [DB, Mysql]
 ---
 
-##Binlog
-###Binlog란?
+## Binlog
+### Binlog란?
 * binlog는 DML(update, insert, delete) 실행시 시간과 함께 기록되는 로그이다.
 * 데이터 복구와 Replication에 사용된다.
 
-###Binlog를 활성화하기 위한 옵션들
+### Binlog를 활성화하기 위한 옵션들
 * my.cnf에 아래 옵션들을 넣어준다.     
 1. log-bin=[binlog가 저장될 디렉토리와 파일명] 
-2. binlog_format=[ROW|MIXED|STATEMENT] ([참고](http://channy.creation.net/project/dev.kthcorp.com/2011/09/16/mysql-replication-binlog-format-mixed-vs-row/index.html)) 
+2. binlog_format=[ROW, MIXED, STATEMENT] ([참고](http://channy.creation.net/project/dev.kthcorp.com/2011/09/16/mysql-replication-binlog-format-mixed-vs-row/index.html)) 
     * ROW
         * 변경된 행 자체를 BASE64로 Encoding하여 Binary Log에 기록하는 방식
         * Master 에서 실행된 SQL이 Slave 에서 재 실행되지 않으나, 변경된 행이 많은 경우 Binary Log 사이즈가 비약적으로 커질 수 있음
@@ -26,15 +26,14 @@ tags: [DB, Mysql]
 4. max_binlog_size=[binlog 파일 최대 사이즈]
 * 설명되지 않은 더 많은 옵션들은 [mysql 공식 문서](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html) 에서 확인하자.
 
-##mysqlbinlog 
+## mysqlbinlog 
 
-###mysqlbinlog란?
+### mysqlbinlog란?
 * mysqlbinlog는 binary log를 텍스트 형식으로 변환해서 사람이 읽을 수 있게 만들어주는 툴이다.
 * 위 툴을 통해서 자신이 원하는 시점으로 복구(PITR)를 할 수 있다. 
 * mysqlbinlog를 사용하기 위해서는 binlog가 활성화되어 있어야 한다. 
-###명령어와 옵션 설명
-* 기본적인 명령어
-    
+### 명령어와 옵션 설명
+* 기본적인 명령어    
     ```mysqlbinlog [binlog 이름] [option들]```
     
 * option들
@@ -42,7 +41,7 @@ tags: [DB, Mysql]
         * ```--host```: 원격 서버의 hostname
         * ```--user```: 원격 서버의 user
         * ```--password```: 원격 서버의 password
-    * ```--skip-gtids```: gtid 모드를 사용할 때, gtid 정보를 제거하고 출력한다. ```SET @@SESSION.GTID_NEXT``` 같은 값이 제거된다.
+    * ```--skip-gtids```: gtid 모드를 사용할 때, gtid 정보를 제거하고 출력한다.
         * ```--skip-gtids```를 제거하고 mysqlbinlog를 실행한 결과
             ```sql
               # at 812
@@ -76,7 +75,7 @@ tags: [DB, Mysql]
             /*!*/;
            ```
           
-### binlog로 부터 mysql 복구 실습
+## binlog로 부터 mysql 복구 실습
 
 * 테스트 환경
     ```
@@ -141,3 +140,4 @@ tags: [DB, Mysql]
        ```bash
         mysql -uroot -ptest < restore.sql
        ```
+       
